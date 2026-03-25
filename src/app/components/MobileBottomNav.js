@@ -7,7 +7,7 @@ import { Home, BookOpen, Layers3, User } from "lucide-react";
 const items = [
   { label: "Home", href: "/", icon: Home },
   { label: "Books", href: "/books", icon: BookOpen },
-  { label: "Collection", href: "/collection", icon: Layers3 },
+  { label: "About", href: "/About", icon: Layers3 },
   { label: "Profile", href: "/profile", icon: User },
 ];
 

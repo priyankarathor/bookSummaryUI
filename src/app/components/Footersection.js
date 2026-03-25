@@ -42,14 +42,14 @@ export default function FooterSection() {
 
             <div className="mt-5 flex gap-3">
               <Link
-                href="/collection"
+                href="/books"
                 className="inline-flex items-center justify-center rounded-full bg-[#f7f1e7] px-5 py-3 text-sm font-semibold text-black"
               >
                 Explore
               </Link>
 
               <Link
-                href="/about"
+                href="/About"
                 className="inline-flex items-center justify-center rounded-full border border-white/12 bg-white/[0.04] px-5 py-3 text-sm font-semibold text-white"
               >
                 About
@@ -116,8 +116,8 @@ export default function FooterSection() {
               title="Navigation"
               links={[
                 { label: "Home", href: "/" },
-                { label: "Collection", href: "/collection" },
-                { label: "About", href: "/about" },
+                { label: "Collection", href: "/books" },
+                { label: "About", href: "/About" },
               ]}
             />
 
@@ -199,7 +199,7 @@ export default function FooterSection() {
                   whileTap={{ scale: 0.98 }}
                 >
                   <Link
-                    href="/collection"
+                    href="/books"
                     className="group inline-flex items-center gap-2 rounded-full bg-[#f7f1e7] px-7 py-3.5 text-sm font-semibold text-black shadow-[0_10px_30px_rgba(247,241,231,0.15)] transition duration-300"
                   >
                     Explore Collection
@@ -212,7 +212,7 @@ export default function FooterSection() {
 
                 <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.98 }}>
                   <Link
-                    href="/about"
+                    href="/About"
                     className="inline-flex items-center rounded-full border border-white/12 bg-white/[0.04] px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-xl transition duration-300 hover:border-white/20 hover:bg-white/[0.07]"
                   >
                     About Brand
@@ -303,9 +303,9 @@ export default function FooterSection() {
                 title="Navigation"
                 links={[
                   { label: "Home", href: "/" },
-                  { label: "Collection", href: "/collection" },
+                  { label: "Collection", href: "/books" },
                   { label: "Featured", href: "/featured" },
-                  { label: "About", href: "/about" },
+                  { label: "About", href: "/About" },
                 ]}
               />
             </motion.div>

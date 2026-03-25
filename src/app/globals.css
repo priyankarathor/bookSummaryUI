@@ -46,3 +46,71 @@ body {
   backface-visibility: hidden;
   will-change: transform, opacity;
 }
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes floatSlowSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spinSlow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes breatheSlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes breatheSlowAlt {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: 0.9;
+  }
+}
+
+.animate-floatSlow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-floatSlowSlow {
+  animation: floatSlowSlow 7s ease-in-out infinite;
+}
+
+.animate-spinSlow {
+  animation: spinSlow 18s linear infinite;
+}
+
+.animate-breatheSlow {
+  animation: breatheSlow 5s ease-in-out infinite;
+}
+
+.animate-breatheSlowAlt {
+  animation: breatheSlowAlt 6s ease-in-out infinite;
+}
