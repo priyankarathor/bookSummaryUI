@@ -6,11 +6,14 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Menu, X, ChevronRight, PenTool } from "lucide-react";
 import gsap from "gsap";
 
+
+
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/About" },
   { name: "Books", href: "/books" },
   { name: "Contact", href: "/contact" },
+  {name: "bookpage" , href:"/bookdetails"}
 ];
 
 export default function Navbar() {

@@ -1,13 +1,27 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import { gsap } from "gsap";
 import { ArrowRight, Star } from "lucide-react";
+import Link from "next/link";
+
+// 🔥 Simple HTML cleaner (removes block tags)
+const cleanHTML = (html = "") => {
+  return html
+    .replace(/<\/?(p|div|h[1-6]|section|article)[^>]*>/gi, "")
+    .trim();
+};
 
 export default function BookCard({ book }) {
   const cardRef = useRef(null);
   const coverRef = useRef(null);
+
+  // ✅ Clean HTML once (performance optimized)
+  const cleanTitle = useMemo(() => cleanHTML(book.title), [book.title]);
+  const cleanDesc = useMemo(
+    () => cleanHTML(book.shortDescription),
+    [book.shortDescription]
+  );
 
   useEffect(() => {
     const card = cardRef.current;
@@ -70,6 +84,7 @@ export default function BookCard({ book }) {
       className="group relative rounded-[22px] border border-white/10 bg-[#0b0b0b] p-3 md:p-4 overflow-hidden shadow-[0_16px_50px_rgba(0,0,0,0.4)] transition-transform max-w-[320px] mx-auto"
       style={{ transformStyle: "preserve-3d" }}
     >
+      {/* Glow Effect */}
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500"
         style={{
@@ -78,6 +93,7 @@ export default function BookCard({ book }) {
       />
 
       <div className="relative z-10">
+        {/* Top */}
         <div className="flex justify-between items-start mb-3">
           <span className="text-[9px] uppercase tracking-[0.28em] text-white/40">
             {book.genre}
@@ -89,6 +105,7 @@ export default function BookCard({ book }) {
           </span>
         </div>
 
+        {/* Book Cover */}
         <div className="relative h-[200px] mb-3 flex items-end justify-center perspective-[1200px]">
           <div className="absolute bottom-2 h-6 w-[65%] bg-black/60 blur-2xl rounded-full" />
 
@@ -110,23 +127,31 @@ export default function BookCard({ book }) {
               <p className="text-[8px] tracking-[0.25em] uppercase text-white/60 mb-1">
                 Priyanka Collection
               </p>
-              <h3 className="text-white text-base font-semibold leading-tight line-clamp-2">
-                {book.title}
-              </h3>
+
+              {/* ✅ Title with HTML + 2 lines */}
+              <h3
+                className="text-white text-base font-semibold leading-tight line-clamp-2 overflow-hidden"
+                dangerouslySetInnerHTML={{ __html: cleanTitle }}
+              />
             </div>
           </div>
         </div>
 
+        {/* Content */}
         <div className="space-y-1.5">
-          <h2 className="text-lg md:text-xl font-semibold text-white leading-tight">
-            {book.title}
-          </h2>
+          {/* ✅ Title again */}
+          <h2
+            className="text-lg md:text-xl font-semibold text-white leading-tight line-clamp-2 overflow-hidden"
+            dangerouslySetInnerHTML={{ __html: cleanTitle }}
+          />
 
           <p className="text-xs text-white/50">By {book.author}</p>
 
-          <p className="text-xs leading-5 text-white/65 line-clamp-3">
-            {book.shortDescription}
-          </p>
+          {/* ✅ Description with HTML + 2 lines */}
+          <p
+            className="text-xs leading-5 text-white/65 line-clamp-2 overflow-hidden"
+            dangerouslySetInnerHTML={{ __html: cleanDesc }}
+          />
 
           <div className="flex items-center justify-between pt-2 text-[11px] text-white/45">
             <span>{book.pages} pages</span>

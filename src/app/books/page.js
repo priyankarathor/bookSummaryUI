@@ -1,22 +1,35 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 import BookCollectionHero from "../components/books/BookCollectionHero";
 import BookGrid from "../components/books/BookGrid";
-import BookshelfSection from "../components/books/BookshelfSection";
-import Influenceshelf from "../components/books/fluenceshelf";
- 
- 
-import { books } from "../data/booksData";
+import { formatBooks } from "../data/booksData";
 
 export default function BooksPage() {
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    const loadBooks = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/api/books");
+
+        const formatted = formatBooks(res.data);
+
+        setBooks(formatted);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    loadBooks();
+  }, []);
+
   return (
-    <main className="min-h-screen bg-[#050505]">
-       
-
-      <BookCollectionHero /> 
-      <BookGrid books={books.slice(0, 6)} />
-      <BookshelfSection books={books} />
-      <Influenceshelf />
-
-      
-    </main>
+    <>
+      <BookCollectionHero />
+      <BookGrid books={books} />
+    </>
   );
 }
