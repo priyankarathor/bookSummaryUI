@@ -12,7 +12,7 @@ export default function BookDetailsPage() {
 
   useEffect(() => {
     const loadBook = async () => {
-      const res = await axios.get("http://localhost:5000/api/books");
+      const res = await axios.get("https://book-summary-ui.netlify.app/books");
 
       const formatted = formatBooks(res.data);
 
