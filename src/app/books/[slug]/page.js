@@ -12,7 +12,7 @@ export default function BookDetailsPage() {
 
   useEffect(() => {
     const loadBook = async () => {
-      const res = await axios.get("https://book-summary-ui.netlify.app/books");
+      const res = await axios.get("https://boonode-api-production.up.railway.app/api/books");
 
       const formatted = formatBooks(res.data);
 
