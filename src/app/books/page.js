@@ -13,7 +13,7 @@ export default function BooksPage() {
   useEffect(() => {
     const loadBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/books");
+        const res = await axios.get("https://boonode-api-production.up.railway.app/api/books");
 
         const formatted = formatBooks(res.data);
 
